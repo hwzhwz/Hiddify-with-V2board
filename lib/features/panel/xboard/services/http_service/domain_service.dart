@@ -6,17 +6,17 @@ import 'package:http/http.dart' as http;
 class DomainService {
   // 定义多个 ossDomain 地址
   static const List<String> ossDomains = [
-    'https://vdawa.oss-cn-hongkong.aliyuncs.com/youtu/config.json',
-    'https://youtu.ossconfig/config.json',
-    'https://youtu.ossconfig2/config.json',
-    'https://youtu.ossconfig3/config.json',
-    'https://youtu.ossconfig4/config.json',
-    'https://youtu.ossconfig5/config.json',
-    'https://youtu.ossconfig6/config.json',
-    'https://youtu.ossconfig7/config.json',
-    'https://youtu.ossconfig8/config.json',
-    'https://youtu.ossconfig9/config.json',
-    'https://youtu.ossconfig10/config.json'
+    'https://vdawa.oss-cn-hongkong.aliyuncs.com/boost/config.json',
+    'https://boost.ossconfig/config.json',
+    'https://boost.ossconfig2/config.json',
+    'https://boost.ossconfig3/config.json',
+    'https://boost.ossconfig4/config.json',
+    'https://boost.ossconfig5/config.json',
+    'https://boost.ossconfig6/config.json',
+    'https://boost.ossconfig7/config.json',
+    'https://boost.ossconfig8/config.json',
+    'https://boost.ossconfig9/config.json',
+    'https://boost.ossconfig10/config.json'
   ];
 
   // 从多个 ossDomain 中获取 JSON 并挑选一个可以正常访问的域名
