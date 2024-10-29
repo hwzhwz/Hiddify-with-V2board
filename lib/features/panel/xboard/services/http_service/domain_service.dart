@@ -4,42 +4,61 @@ import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 
 class DomainService {
-  static const String ossDomain =
-      'https://raw.githubusercontent.com/linger040831/rulses/refs/heads/main/websites.json';
+  // 定义多个 ossDomain 地址
+  static const List<String> ossDomains = [
+    'https://vdawa.oss-cn-hongkong.aliyuncs.com/bei/config.json',
+    'https://bei.ossconfig/config.json',
+    'https://bei.ossconfig2/config.json',
+    'https://bei.ossconfig3/config.json',
+    'https://bei.ossconfig4/config.json',
+    'https://bei.ossconfig5/config.json',
+    'https://bei.ossconfig6/config.json',
+    'https://bei.ossconfig7/config.json',
+    'https://bei.ossconfig8/config.json',
+    'https://bei.ossconfig9/config.json',
+    'https://bei.ossconfig10/config.json'
+  ];
 
-// 从返回的 JSON 中挑选一个可以正常访问的域名
+  // 从多个 ossDomain 中获取 JSON 并挑选一个可以正常访问的域名
   static Future<String> fetchValidDomain() async {
-    try {
-      final response = await http
-          .get(Uri.parse(ossDomain))
-          .timeout(const Duration(seconds: 10));
-      if (response.statusCode == 200) {
-        final List<dynamic> websites =
-            json.decode(response.body) as List<dynamic>;
-        for (final website in websites) {
-          final Map<String, dynamic> websiteMap =
-              website as Map<String, dynamic>;
-          final String domain = websiteMap['url'] as String;
-          print(domain);
-          if (await _checkDomainAccessibility(domain)) {
-            if (kDebugMode) {
-              print('Valid domain found: $domain');
+    for (final ossDomain in ossDomains) {
+      try {
+        // 获取 JSON 配置文件
+        final response = await http
+            .get(Uri.parse(ossDomain))
+            .timeout(const Duration(seconds: 10));
+        
+        if (response.statusCode == 200) {
+          final List<dynamic> websites =
+              json.decode(response.body) as List<dynamic>;
+          
+          // 遍历 JSON 文件中的每个域名
+          for (final website in websites) {
+            final Map<String, dynamic> websiteMap =
+                website as Map<String, dynamic>;
+            final String domain = websiteMap['url'] as String;
+
+            // 检查域名的可访问性
+            if (await _checkDomainAccessibility(domain)) {
+              if (kDebugMode) {
+                print('Valid domain found: $domain');
+              }
+              return domain;
             }
-            return domain;
           }
+          print('No accessible domains found in $ossDomain.');
+        } else {
+          print('Failed to fetch JSON from $ossDomain. Status code: ${response.statusCode}');
         }
-        throw Exception('No accessible domains found.');
-      } else {
-        throw Exception(
-            'Failed to fetch websites.json: $ossDomain ${response.statusCode}');
+      } catch (e) {
+        if (kDebugMode) {
+          print('Error fetching from $ossDomain: $e');
+        }
       }
-    } catch (e) {
-      if (kDebugMode) {
-        print('Error fetching valid domain: $ossDomain:  $e');
-      }
-      rethrow;
     }
+    throw Exception('No accessible domains found across all OSS domains.');
   }
+
 
   static Future<bool> _checkDomainAccessibility(String domain) async {
     try {
