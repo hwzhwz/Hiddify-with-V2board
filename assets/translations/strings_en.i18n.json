@@ -1,6 +1,6 @@
 {
   "general": {
-    "appTitle": "beibeicloud",
+    "appTitle": "youtu_shop",
     "reset": "Reset",
     "toggle": {
       "enabled": "Enabled",
@@ -161,7 +161,7 @@
     "confirmButton": "Logout"
   },
   "login": {
-    "welcome": "Welcome to beibeicloud",
+    "welcome": "Welcome to youtu_shop",
     "username": "Username",
     "password": "Password",
     "loginButton": "Login",
