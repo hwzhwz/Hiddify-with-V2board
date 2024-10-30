@@ -6,18 +6,18 @@ import 'package:http/http.dart' as http;
 class DomainService {
   // 定义多个 ossDomain 地址
   static const List<String> ossDomains = [
-    'https://vdawa.oss-cn-hongkong.aliyuncs.com/boost/config.json',
-    'https://boost.ossconfig.top/config.json',
-    'https://boost.ossconfig1.top/config.json',
-    'https://boost.ossconfig2.top/config.json',
-    'https://boost.ossconfig3.top/config.json',
-    'https://boost.ossconfig4.top/config.json',
-    'https://boost.ossconfig5.top/config.json',
-    'https://boost.ossconfig6.top/config.json',
-    'https://boost.ossconfig7.top/config.json',
-    'https://boost.ossconfig8.top/config.json',
-    'https://boost.ossconfig9.top/config.json',
-    'https://boost.ossconfig10.top/config.json'
+    'https://vdawa.oss-cn-hongkong.aliyuncs.com/bei/config.json',
+    'https://bei.ossconfig.top/config.json',
+    'https://bei.ossconfig1.top/config.json',
+    'https://bei.ossconfig2.top/config.json',
+    'https://bei.ossconfig3.top/config.json',
+    'https://bei.ossconfig4.top/config.json',
+    'https://bei.ossconfig5.top/config.json',
+    'https://bei.ossconfig6.top/config.json',
+    'https://bei.ossconfig7.top/config.json',
+    'https://bei.ossconfig8.top/config.json',
+    'https://bei.ossconfig9.top/config.json',
+    'https://bei.ossconfig10.top/config.json'
   ];
 
   // 从多个 ossDomain 中获取 JSON 并挑选一个可以正常访问的域名
